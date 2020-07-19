@@ -1,0 +1,61 @@
+.add-client-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+.client-from {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input {
+  width: 50%;
+  display: block;
+}
+
+
+.help-block {
+  padding: 0;
+  margin: 12px 0 10px 0;
+  font-size: 18px;
+  text-align: left;
+  width: 50%;
+  color: #111010;
+}
+
+.help-block-small {
+  padding: 0;
+  margin: 0 0 10px 0;
+  text-align: left;
+  color: #111010;
+  width: 100%;
+  font-size: 12px;
+}
+
+.actual-address-same {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.add-client-button {
+  border: none;
+  outline: none;
+  background: rgb(64, 162, 207);
+  color: white;
+  border-radius: 8px;
+  padding: 10px 15px 10px 15px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.add-client-button:hover {
+  background: #1372f3;
+}
+
+.photoName {
+  margin: 0 0 12px 0;
+}

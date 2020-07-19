@@ -1,0 +1,13 @@
+.clients-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 70px;
+}
+
+.clients-table {
+  width: 100%;
+}
+
+.table-filter-input {
+  width: 50%;
+}
