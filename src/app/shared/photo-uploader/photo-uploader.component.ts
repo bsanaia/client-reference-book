@@ -17,6 +17,7 @@ export class PhotoUploaderComponent implements OnInit {
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
+    console.log(event.target.files);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {

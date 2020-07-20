@@ -1,7 +1,7 @@
 .clients-container {
   width: 80%;
   margin: 0 auto;
-  padding: 70px;
+  padding: 50px 70px 70px 70px;
 }
 
 .clients-table {
@@ -10,4 +10,42 @@
 
 .table-filter-input {
   width: 50%;
+}
+
+.add-client-button-container {
+  width: 100%;
+  position: relative;
+  margin-top: 40px;
+}
+
+.add-client-button {
+  border: none;
+  outline: none;
+  background: #2888e3;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 15px 10px 15px;
+  cursor: pointer;
+  transition: all .3s;
+  position: absolute;
+  right: 10%;
+}
+
+.add-client-button:hover {
+  background: #1372f3;
+}
+
+.settings-icon, .delete-icon {
+  cursor: pointer;
+  color: darkgray;
+}
+
+.delete-icon:hover {
+  color: #ff0a07;
+  transition: .2s;
+}
+
+.settings-icon:hover {
+  color: #3b8fff;
+  transition: .5s;
 }

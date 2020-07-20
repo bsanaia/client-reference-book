@@ -1,3 +1,11 @@
+import {AccountModel} from './account.model';
+
+class ClientAddress {
+  country: string;
+  city: string;
+  address: string;
+}
+
 export class ClientModel {
   id: number;
   name: string;
@@ -6,16 +14,9 @@ export class ClientModel {
   idNumber: string;
   mobile: string;
   photo: string;
-  registeredAddress: {
-    country: string;
-    city: string;
-    address: string;
-  };
-  actualAddress: {
-    country: string;
-    city: string;
-    address: string;
-  };
+  registeredAddress: ClientAddress;
+  actualAddress: ClientAddress;
+  account: AccountModel[];
 
   constructor() {
   }

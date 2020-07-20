@@ -35,7 +35,8 @@ import { PhotoUploaderComponent } from './photo-uploader/photo-uploader.componen
     ReactiveFormsModule,
     PaginatorComponent,
     MatCheckboxModule,
-    PhotoUploaderComponent
+    PhotoUploaderComponent,
+    HeaderComponent
   ],
   providers: []
 })

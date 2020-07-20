@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {Routes, RouterModule, Router} from '@angular/router';
 import {ClientComponent} from './client.component';
-import {AddClientComponent} from './add-client/add-client.component';
+import {AddClientComponent} from './components/add-client/add-client.component';
 
 
 const routes: Routes = [
@@ -11,6 +11,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class ClientRoutingModule {}

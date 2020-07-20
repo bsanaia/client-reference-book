@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AccountComponent } from './account/account.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +19,6 @@ export const configFactory = (configService: ConfigService) => {
 @NgModule({
   declarations: [
     AppComponent,
-    AccountComponent,
   ],
   imports: [
     BrowserModule,

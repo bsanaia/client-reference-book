@@ -1,0 +1,133 @@
+.add-client-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.basic-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 35%
+}
+
+.client-from {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input {
+  display: block;
+}
+
+
+.help-block {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+  color: #111010;
+}
+
+.help-block-small {
+  padding: 0;
+  text-align: center;
+  color: #111010;
+  width: 100%;
+  font-size: 12px;
+}
+
+.actual-address-same {
+  display: flex;
+  align-items: center;
+}
+
+.add-client-button {
+  border: none;
+  outline: none;
+  background: rgb(64, 162, 207);
+  color: white;
+  font-size: 22px;
+  border-radius: 8px;
+  padding: 12px 20px 12px 20px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.add-client-button:hover {
+  background: #1372f3;
+}
+
+.photoName {
+  margin: 0 0 12px 0;
+}
+
+.disabled {
+  opacity: 0.7;
+  background: rgb(64, 162, 207) !important;
+  cursor: not-allowed;
+}
+
+
+.address-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+
+.uploaded-photo {
+  width: 100px;
+}
+
+.add-account-text {
+  text-align: left;
+}
+
+.gap {
+  margin-bottom: 50px;
+}
+
+.account-container {
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.account-group-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center !important;
+}
+
+.settings-icon, .delete-icon {
+  cursor: pointer;
+  color: darkgray;
+}
+
+.settings-icon:hover {
+  color: #3b8fff;
+  transition: .5s;
+}
+
+.delete-icon:hover {
+  color: #ff0a07;
+  transition: .2s;
+}
+
+.add-account-button {
+  border: none;
+  outline: none;
+  background: rgb(64, 162, 207);
+  cursor: pointer;
+  transition: all .3s;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 10px 10px 12px;
+}
+
+.add-account-button:hover {
+  background: #1372f3;
+}

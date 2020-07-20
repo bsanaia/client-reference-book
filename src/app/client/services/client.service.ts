@@ -17,7 +17,8 @@ export class ClientService {
       registeredAddress: formData.registeredAddress,
       actualAddress: formData.actualAddress,
       Gender: formData.gender,
-      photo: formData.photo
+      photo: formData.photo,
+      accounts: formData.account
     };
     console.log(this.configService.config);
     return this.http.post(`${this.configService.config.baseUrl}/clients`, data);

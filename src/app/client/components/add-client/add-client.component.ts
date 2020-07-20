@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {ClientService} from '../services/client.service';
+import {FormArray, FormGroup} from '@angular/forms';
+import {ClientService} from '../../services/client.service';
 import {MatCheckboxChange} from '@angular/material/checkbox';
-import {ClientFormBuilderService} from '../forms/client-form-builder.service';
+import {ClientFormBuilderService} from '../../forms/client-form-builder.service';
 
 @Component({
   selector: 'app-add-client',
@@ -30,11 +30,11 @@ export class AddClientComponent implements OnInit {
   }
 
   addClient() {
-    if (this.clientForm) {
+    if (this.sameAsRegisteredAddress) {
       this.markActualSameAsRegisteredAddress();
     }
-    console.log(this.clientForm.value);
-    // this.clientService.addClient(this.clientForm.value).subscribe();
+    console.log(this.clientForm);
+    this.clientService.addClient(this.clientForm.value).subscribe();
   }
 
   actualAddressCheckboxClicked(event: MatCheckboxChange) {
@@ -58,23 +58,19 @@ export class AddClientComponent implements OnInit {
     actualAddressCountry.setValue(registeredAddrCountry);
     actualAddressCity.setValue(registeredAddrCity);
     actualAddressAddress.setValue(registeredAddrAddress);
-    actualAddressCountry.disable();
-    actualAddressCity.disable();
-    actualAddressAddress.disable();
-    document.getElementById('actualAddress').style.opacity = '0.7';
+    document.getElementById('actualAddress').style.opacity = '0.4';
+  }
+
+  addAccount() {
+    this.clientFormBuilder.addAccounts();
+  }
+
+  removeAccount(index) {
+    (this.clientForm.get('account') as FormArray).removeAt(index);
   }
 
   clearActualAddressValues() {
-    const actualAddressCountry = this.clientForm.get('actualAddress').get('country');
-    const actualAddressCity = this.clientForm.get('actualAddress').get('city');
-    const actualAddressAddress = this.clientForm.get('actualAddress').get('address');
-
-    actualAddressCountry.setValue('');
-    actualAddressCity.setValue('');
-    actualAddressAddress.setValue('');
-    actualAddressCountry.enable();
-    actualAddressCity.enable();
-    actualAddressAddress.enable();
+    this.clientForm.get('actualAddress').reset();
     document.getElementById('actualAddress').style.opacity = '1';
   }
 
