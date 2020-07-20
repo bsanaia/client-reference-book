@@ -3,7 +3,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {ClientService} from './services/client.service';
 import {ClientModel} from './models/client.model';
-import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -16,7 +16,8 @@ export class ClientComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'Name', 'LastName', 'Gender', 'Mobile', 'IDNumber', 'actions'];
 
 
-  constructor(private clientService: ClientService, public dialog: MatDialog) {
+  constructor(private clientService: ClientService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,6 +41,10 @@ export class ClientComponent implements OnInit, OnDestroy {
 
   onSortChange(ev) {
     localStorage.setItem('sorting', JSON.stringify(ev));
+  }
+
+  openClientProfile(id) {
+    this.router.navigate(['/client'], {queryParams: {id}});
   }
 
   ngOnDestroy(): void {

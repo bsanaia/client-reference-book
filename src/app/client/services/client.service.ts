@@ -8,6 +8,8 @@ export class ClientService {
   constructor(private http: HttpClient, private configService: ConfigService) {
   }
 
+  baseUrl = this.configService.config.baseUrl;
+
   addClient(formData: ClientModel) {
     const data = {
       Name: formData.name,
@@ -21,12 +23,16 @@ export class ClientService {
       accounts: formData.account
     };
     console.log(this.configService.config);
-    return this.http.post(`${this.configService.config.baseUrl}/clients`, data);
+    return this.http.post(`${this.baseUrl}/clients`, data);
   }
 
   getClients() {
     console.log(this.configService.config);
-    return this.http.get(`${this.configService.config.baseUrl}/clients`);
+    return this.http.get(`${this.baseUrl}/clients`);
+  }
+
+  getClientWithId(id) {
+    return this.http.get(`${this.baseUrl}/client/${id}`);
   }
 }
 
