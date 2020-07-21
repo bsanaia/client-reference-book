@@ -13,7 +13,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .form-input {
@@ -130,4 +131,12 @@
 
 .add-account-button:hover {
   background: #1372f3;
+}
+
+.address-box {
+  width: 30%;
+}
+
+.address-form-input {
+  width: 100%;
 }

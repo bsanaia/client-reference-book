@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {FormGroup} from '@angular/forms';
+import {ClientFormBuilderService} from '../../forms/client-form-builder.service';
 
 @Component({
   selector: 'app-client-profile',
@@ -8,11 +10,19 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ClientProfileComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  clientForm: FormGroup;
+  userId: number;
+
+  constructor(private activatedRoute: ActivatedRoute, private clientFormBuilder: ClientFormBuilderService) {
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data: any) => {
-      console.log(data);
+    this.activatedRoute.data.subscribe((userData: any) => {
+      this.userId = userData.client.id;
+      delete userData.client.id;
+      this.clientForm = this.clientFormBuilder.buildForm();
+      this.clientForm.setValue(userData.client);
+      console.log(this.clientForm);
     });
   }
 

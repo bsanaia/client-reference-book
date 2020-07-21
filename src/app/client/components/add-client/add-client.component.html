@@ -102,10 +102,10 @@
     </div>
 
     <div class="address-container">
-      <div>
+      <div class="address-box">
         <p class="help-block">Registered Address</p>
         <div formGroupName="registeredAddress" class="client-from">
-          <mat-form-field class="form-input">
+          <mat-form-field class="form-input address-form-input">
             <mat-label>* City</mat-label>
             <input matInput formControlName="city">
             <mat-error *ngIf="clientForm.get('registeredAddress').get('city').touched &&
@@ -114,7 +114,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="form-input">
+          <mat-form-field class="form-input address-form-input">
             <mat-label>* Country</mat-label>
             <input matInput formControlName="country">
             <mat-error *ngIf="clientForm.get('registeredAddress').get('country').touched &&
@@ -124,7 +124,7 @@
           </mat-form-field>
 
 
-          <mat-form-field class="form-input">
+          <mat-form-field class="form-input address-form-input">
             <mat-label>* Address</mat-label>
             <input matInput formControlName="address">
             <mat-error *ngIf="clientForm.get('registeredAddress').get('address').touched &&
@@ -135,7 +135,7 @@
         </div>
       </div>
 
-      <div>
+      <div  class="address-box">
         <div>
           <span class="help-block">Actual Address &nbsp;&nbsp;
           <span class="help-block-small">Same as registered address</span>&nbsp;
@@ -143,7 +143,7 @@
           </span>
         </div>
         <div formGroupName="actualAddress" class="client-from" id="actualAddress">
-          <mat-form-field class="form-input">
+          <mat-form-field class="form-input address-form-input">
             <mat-label>* City</mat-label>
             <input matInput formControlName="city">
             <mat-error *ngIf="clientForm.get('actualAddress').get('city').invalid &&
@@ -152,7 +152,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="form-input">
+          <mat-form-field class="form-input address-form-input">
             <mat-label>* Country</mat-label>
             <input matInput formControlName="country">
             <mat-error *ngIf="clientForm.get('actualAddress').get('country').invalid &&
@@ -162,7 +162,7 @@
           </mat-form-field>
 
 
-          <mat-form-field class="form-input">
+          <mat-form-field class="form-input address-form-input">
             <mat-label>* Address</mat-label>
             <input matInput formControlName="address">
             <mat-error *ngIf="clientForm.get('actualAddress').get('address').invalid &&

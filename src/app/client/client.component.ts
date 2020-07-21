@@ -4,20 +4,31 @@ import {MatSort} from '@angular/material/sort';
 import {ClientService} from './services/client.service';
 import {ClientModel} from './models/client.model';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {DeleteClientComponent} from './components/delete-client/delete-client.component';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrls: ['./client.component.css']
+  styleUrls: ['./client.component.css'],
+  animations: [
+    trigger('slideIn', [
+      transition(':enter', [
+        style({opacity: 0, transform: 'translateX(-200px)'}),
+        animate('300ms', style({opacity: 1, transform: 'none'}))
+      ])
+    ])
+  ]
 })
 export class ClientComponent implements OnInit, OnDestroy {
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  displayedColumns: string[] = ['id', 'Name', 'LastName', 'Gender', 'Mobile', 'IDNumber', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'gender', 'mobile', 'idNumber', 'actions'];
 
 
   constructor(private clientService: ClientService,
-              private router: Router) {
+              private router: Router, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -43,8 +54,9 @@ export class ClientComponent implements OnInit, OnDestroy {
     localStorage.setItem('sorting', JSON.stringify(ev));
   }
 
-  openClientProfile(id) {
-    this.router.navigate(['/client'], {queryParams: {id}});
+  deleteClient(id) {
+    this.dialog.open(DeleteClientComponent, {data: id});
+    // this.clientService.deleteClient(id).subscribe();
   }
 
   ngOnDestroy(): void {

@@ -12,12 +12,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
+import { DeleteClientComponent } from './components/delete-client/delete-client.component';
 
 @NgModule({
   declarations: [
     ClientComponent,
     AddClientComponent,
     ClientProfileComponent,
+    DeleteClientComponent,
   ],
   imports: [
     SharedModule,

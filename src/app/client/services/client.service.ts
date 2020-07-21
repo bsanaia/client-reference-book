@@ -12,27 +12,29 @@ export class ClientService {
 
   addClient(formData: ClientModel) {
     const data = {
-      Name: formData.name,
-      LastName: formData.lastName,
-      Mobile: formData.mobile,
-      IDNumber: formData.idNumber,
+      name: formData.name,
+      lastName: formData.lastName,
+      mobile: formData.mobile,
+      idNumber: formData.idNumber,
       registeredAddress: formData.registeredAddress,
       actualAddress: formData.actualAddress,
-      Gender: formData.gender,
+      gender: formData.gender,
       photo: formData.photo,
-      accounts: formData.account
+      account: formData.account
     };
-    console.log(this.configService.config);
     return this.http.post(`${this.baseUrl}/clients`, data);
   }
 
   getClients() {
-    console.log(this.configService.config);
     return this.http.get(`${this.baseUrl}/clients`);
   }
 
   getClientWithId(id) {
-    return this.http.get(`${this.baseUrl}/client/${id}`);
+    return this.http.get(`${this.baseUrl}/clients/${id}`);
+  }
+
+  deleteClient(id) {
+    return this.http.delete(`${this.baseUrl}/clients/${id}`);
   }
 }
 
