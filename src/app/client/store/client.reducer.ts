@@ -1,5 +1,4 @@
 import * as ClientActions from './client.actions';
-import {act} from '@ngrx/effects';
 
 
 const State = {
@@ -7,7 +6,6 @@ const State = {
 };
 
 export function clientReducer(state = State, action: ClientActions.ClientActions) {
-  console.log(action);
   switch (action.type) {
     case ClientActions.ADD_CLIENT_START:
       return {
@@ -22,6 +20,12 @@ export function clientReducer(state = State, action: ClientActions.ClientActions
       return {
         ...state,
         clients: [...action.payload]
+      };
+    case ClientActions.DELETE_CLIENT:
+      const clientsFiltered = state.clients.filter(x => x.id !== action.payload);
+      return {
+        ...state,
+        clients: [...clientsFiltered]
       };
     default: {
       return {...state};

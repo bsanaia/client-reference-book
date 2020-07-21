@@ -5,12 +5,14 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
 import {ClientFormBuilderService} from '../../forms/client-form-builder.service';
 import * as ClientActions from '../../store/client.actions';
 import {Store} from '@ngrx/store';
+import {slideInAnimation} from '../../animations/client-animations';
 
 
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
-  styleUrls: ['./add-client.component.css']
+  styleUrls: ['./add-client.component.css'],
+  animations: [slideInAnimation]
 })
 export class AddClientComponent implements OnInit {
   clientForm: FormGroup;

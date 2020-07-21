@@ -2,26 +2,18 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {ClientService} from './services/client.service';
-import {ClientModel} from './models/client.model';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteClientComponent} from './components/delete-client/delete-client.component';
-import {animate, style, transition, trigger} from '@angular/animations';
 import {Store} from '@ngrx/store';
 import * as ClientActions from './store/client.actions';
+import {slideInAnimation} from './animations/client-animations';
 
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css'],
-  animations: [
-    trigger('slideIn', [
-      transition(':enter', [
-        style({opacity: 0, transform: 'translateX(-200px)'}),
-        animate('300ms', style({opacity: 1, transform: 'none'}))
-      ])
-    ])
-  ]
+  animations: [slideInAnimation]
 })
 export class ClientComponent implements OnInit, OnDestroy {
   dataSource: any;
@@ -33,17 +25,6 @@ export class ClientComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.clientService.getClients().subscribe((clients: ClientModel[]) => {
-    //   console.log(clients);
-    //   this.dataSource = new MatTableDataSource(clients);
-    //   this.dataSource.sort = this.sort;
-    //   const sortingData = localStorage.getItem('sorting');
-    //   if (sortingData) {
-    //     const sorting: {active: string, direction: string} = JSON.parse(sortingData);
-    //     this.dataSource.sort.active = sorting.active;
-    //     this.dataSource.sort.direction = sorting.direction;
-    //   }
-    // });
     this.store.dispatch(new ClientActions.GetClients());
     this.store.select('client').subscribe(clients => {
         this.dataSource = new MatTableDataSource(clients.clients);
@@ -68,7 +49,6 @@ export class ClientComponent implements OnInit, OnDestroy {
 
   deleteClient(id) {
     this.dialog.open(DeleteClientComponent, {data: id});
-    // this.clientService.deleteClient(id).subscribe();
   }
 
   ngOnDestroy(): void {

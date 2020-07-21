@@ -2,20 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormGroup} from '@angular/forms';
 import {ClientFormBuilderService} from '../../forms/client-form-builder.service';
-import {animate, style, transition, trigger} from '@angular/animations';
+import {slideInAnimation} from '../../animations/client-animations';
 
 @Component({
   selector: 'app-client-profile',
   templateUrl: './client-profile.component.html',
   styleUrls: ['./client-profile.component.css'],
-  animations: [
-    trigger('slideIn', [
-      transition(':enter', [
-        style({opacity: 0, transform: 'translateX(-300px)'}),
-        animate('200ms', style({opacity: 1, transform: 'none'}))
-      ])
-    ])
-  ]
+  animations: [slideInAnimation]
 })
 export class ClientProfileComponent implements OnInit {
 

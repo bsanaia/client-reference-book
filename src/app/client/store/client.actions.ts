@@ -3,8 +3,8 @@ import {ClientModel} from '../models/client.model';
 
 export const ADD_CLIENT_START = '[Client] Add Client Start';
 export const ADD_CLIENT_SUCCESS = '[Client] Add Client Success';
-export const UPDATE_CLIENT = '[Client] UPDATE_CLIENT Client';
-export const DELETE_CLIENT = '[Client] DELETE Client';
+export const UPDATE_CLIENT = '[Client] Update Client';
+export const DELETE_CLIENT = '[Client] Delete Client';
 export const SET_CLIENTS = '[Client] Set Clients';
 export const GET_CLIENT = '[Client] Get Clients';
 export const GET_CLIENTS = '[Client] Get Clients';

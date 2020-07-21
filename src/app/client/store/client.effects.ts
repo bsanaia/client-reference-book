@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Store} from '@ngrx/store';
 
 import * as ClientActions from './client.actions';
-import {exhaustMap, map} from 'rxjs/operators';
+import {exhaustMap, map, mergeMap, switchMap} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {ConfigService} from '../../services/global-proxy-service.service';
 import {Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {ClientModel} from '../models/client.model';
 
 @Injectable()
 export class ClientEffects {
-  @Effect()
+  @Effect({dispatch: false})
   addClient$ = this.actions$.pipe(
     ofType(ClientActions.ADD_CLIENT_START),
     exhaustMap((clientData: ClientActions.AddClientStart) => {
@@ -28,6 +28,14 @@ export class ClientEffects {
           return new ClientActions.SetClients(clients);
         })
       );
+    })
+  );
+
+  @Effect({dispatch: false})
+  deleteClient$ = this.actions$.pipe(
+    ofType(ClientActions.DELETE_CLIENT),
+    switchMap((data: any) => {
+      return this.http.delete(`${this.configService.config.baseUrl}/clients/${data.payload}`);
     })
   );
 
