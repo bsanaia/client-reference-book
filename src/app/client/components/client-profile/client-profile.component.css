@@ -29,9 +29,9 @@
 
 .user-img {
   display: inline;
-  margin: 0 auto 0 -25%;
   height: 100%;
-  width: auto;
+  object-fit: cover;
+  width: 100%;
 }
 
 .user-info-form {
@@ -60,6 +60,11 @@
   background: #1372f3;
 }
 
+.update-profile-button-container {
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
 .account-container {
   width: 50%;
   padding: 35px;
@@ -72,7 +77,14 @@
 .account-table {
   width: 100%;
   padding: 35px;
-  background: #dedede;
+  background: linear-gradient( to right bottom, #30adf3, rgb(60, 200, 207));
+  border-collapse: collapse;
+}
+
+.account-table td, .account-table th {
+  border: 1px solid #6a88ff;
+  padding: 8px;
+  color: white;
 }
 
 .account-table > tr > th {
@@ -81,4 +93,48 @@
 
 .account-table > tr  {
   text-align: center;
+}
+
+.no-photo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  background: black;
+  color: white;
+}
+
+.btn-close {
+  outline: none;
+  border: none;
+  background: #f85b5b;
+  padding: 6px;
+  border-radius: 5px;
+  color: white;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background: #f23333;
+}
+
+.btn-open {
+  outline: none;
+  border: none;
+  background: #08d153;
+  padding: 6px;
+  border-radius: 5px;
+  color: white;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.btn-open:hover {
+  background: #0ea747;
 }

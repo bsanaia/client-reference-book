@@ -136,7 +136,7 @@
       </div>
 
       <div  class="address-box">
-        <div>
+        <div class="address-box-text">
           <span class="help-block">Actual Address &nbsp;&nbsp;
           <span class="help-block-small">Same as registered address</span>&nbsp;
             <mat-checkbox (change)="actualAddressCheckboxClicked($event)" class="example-margin"></mat-checkbox>
@@ -194,7 +194,11 @@
 
         <mat-form-field class="form-input">
           <mat-label>Account Type</mat-label>
-          <input matInput formControlName="accountType">
+          <mat-select formControlName="accountType">
+            <mat-option value="current">Current</mat-option>
+            <mat-option value="cumulative">Cumulative</mat-option>
+            <mat-option value="saving">Saving</mat-option>
+          </mat-select>
           <!--          <mat-error *ngIf="clientForm.get('actualAddress').get('address').invalid &&-->
           <!--        clientForm.get('actualAddress').get('address').touched">-->
           <!--            Address is <strong>required</strong>-->
@@ -218,7 +222,10 @@
 
         <mat-form-field class="form-input">
           <mat-label>Account Status</mat-label>
-          <input matInput formControlName="accountStatus">
+          <mat-select formControlName="accountStatus">
+            <mat-option value="open">Open</mat-option>
+            <mat-option value="closed">Closed</mat-option>
+          </mat-select>
           <!--          <mat-error *ngIf="clientForm.get('actualAddress').get('address').invalid &&-->
           <!--        clientForm.get('actualAddress').get('address').touched">-->
           <!--            Address is <strong>required</strong>-->

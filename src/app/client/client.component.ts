@@ -7,6 +7,7 @@ import {DeleteClientComponent} from './components/delete-client/delete-client.co
 import {Store} from '@ngrx/store';
 import * as ClientActions from './store/client.actions';
 import {slideInAnimation} from './animations/client-animations';
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -26,16 +27,27 @@ export class ClientComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(new ClientActions.GetClients());
-    this.store.select('client').subscribe(clients => {
-        this.dataSource = new MatTableDataSource(clients.clients);
+    this.store.select('client')
+      .pipe(
+        map(res => {
+          const clients = [];
+          res.clients.forEach(client => {
+            clients.push(client);
+          });
+          return clients;
+        })
+      )
+      .subscribe(clients => {
+        // console.log('clients from client table', clients);
+        this.dataSource = new MatTableDataSource(clients);
         this.dataSource.sort = this.sort;
         const sortingData = localStorage.getItem('sorting');
         if (sortingData) {
-          const sorting: {active: string, direction: string} = JSON.parse(sortingData);
+          const sorting: { active: string, direction: string } = JSON.parse(sortingData);
           this.dataSource.sort.active = sorting.active;
           this.dataSource.sort.direction = sorting.direction;
         }
-    });
+      });
   }
 
   applyFilter(event: Event) {

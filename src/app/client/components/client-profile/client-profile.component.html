@@ -3,7 +3,8 @@
 <div @slideIn class="container">
   <div class="user-info-container">
     <div class="img-container">
-      <img class="user-img" [src]="clientForm.value.photo" alt="">
+      <img *ngIf="clientForm.value.photo" class="user-img" [src]="clientForm.value.photo" alt="">
+      <div *ngIf="!clientForm.value.photo" class="no-photo">NO PHOTO</div>
     </div>
     <div class="user-info">
       <form [formGroup]="clientForm" class="user-info-form">
@@ -175,12 +176,11 @@
             </mat-error>
           </mat-form-field>
         </div>
-
       </form>
 
     </div>
     <div class="update-profile-button-container">
-      <button class="update-profile-button">Update Info</button>
+      <button (click)="updateInfo()" class="update-profile-button">Update Info</button>
     </div>
   </div>
 
@@ -195,20 +195,18 @@
         <th></th>
       </tr>
 
-      <tr>
-        <td>asdasd</td>
-        <td>asdasd</td>
-        <td>asdasd</td>
-        <td>asdasd</td>
-        <td>Close</td>
-      </tr>
-
-      <tr>
-        <td>asdsd</td>
-        <td>asdsd</td>
-        <td>asdsd</td>
-        <td>asdsd</td>
-        <td>Open</td>
+      <tr *ngFor="let account of clientForm.get('account').value; let j = index;">
+        <td>{{account.accountNumber}}</td>
+        <td>{{account.accountType}}</td>
+        <td>
+          <p style="display: inline-block" *ngFor="let currency of account.currency; let i = index">{{currency}}
+            <span *ngIf="i !== account.currency.length - 1">,</span>&nbsp;</p>
+        </td>
+        <td>{{account.accountStatus}}</td>
+        <td>
+          <button (click)="changeAccountStatus('close', j)" *ngIf="account.accountStatus === 'open'" class="btn-close">Close</button>
+          <button (click)="changeAccountStatus('open', j)" *ngIf="account.accountStatus === 'close'" class="btn-open">Open</button>
+        </td>
       </tr>
     </table>
   </div>

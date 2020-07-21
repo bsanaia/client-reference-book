@@ -28,7 +28,7 @@ export class AddClientStart implements Action {
 export class UpdateClient implements Action {
   readonly type = UPDATE_CLIENT;
 
-  constructor(public payload: ClientModel) {
+  constructor(public payload: any) {
   }
 }
 

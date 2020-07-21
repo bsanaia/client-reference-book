@@ -1,4 +1,5 @@
 import * as ClientActions from './client.actions';
+import * as alertify from 'alertifyjs';
 
 
 const State = {
@@ -12,6 +13,7 @@ export function clientReducer(state = State, action: ClientActions.ClientActions
         ...state
       };
     case ClientActions.ADD_CLIENT_SUCCESS:
+      // console.log('action from adding', action);
       return {
         ...state,
         clients: [...state.clients, action.payload]
@@ -26,6 +28,15 @@ export function clientReducer(state = State, action: ClientActions.ClientActions
       return {
         ...state,
         clients: [...clientsFiltered]
+      };
+    case ClientActions.UPDATE_CLIENT:
+      alertify.success('Client Updated');
+      const clientCopy = JSON.parse(JSON.stringify(state.clients));
+      const idx = clientCopy.findIndex(client => client.id = action.payload.id);
+      clientCopy[idx] = action.payload.payload;
+      return {
+        ...state,
+        clients: clientCopy
       };
     default: {
       return {...state};

@@ -6,6 +6,7 @@ import {ClientFormBuilderService} from '../../forms/client-form-builder.service'
 import * as ClientActions from '../../store/client.actions';
 import {Store} from '@ngrx/store';
 import {slideInAnimation} from '../../animations/client-animations';
+import * as alertify from 'alertifyjs';
 
 
 @Component({
@@ -37,11 +38,15 @@ export class AddClientComponent implements OnInit {
   }
 
   addClient() {
+    if (this.clientForm.invalid) {
+      alertify.error('Form is not valid');
+      return;
+    }
     if (this.sameAsRegisteredAddress) {
       this.markActualSameAsRegisteredAddress();
     }
     this.store.dispatch(new ClientActions.AddClientStart(this.clientForm.value));
-    // this.clientService.addClient(this.clientForm.value).subscribe();
+    alertify.success('Client Added');
   }
 
   actualAddressCheckboxClicked(event: MatCheckboxChange) {

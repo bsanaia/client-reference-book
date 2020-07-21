@@ -134,7 +134,11 @@
 }
 
 .address-box {
-  width: 30%;
+  width: 50%;
+}
+
+.address-box-text {
+  text-align: center;
 }
 
 .address-form-input {
