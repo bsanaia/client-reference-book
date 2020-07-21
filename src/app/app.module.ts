@@ -11,6 +11,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ConfigService} from './services/global-proxy-service.service';
+import {StoreModule} from '@ngrx/store';
+import * as fromApp from './store/app.reducer';
+import {from} from 'rxjs';
+import {EffectsModule} from '@ngrx/effects';
+import {ClientEffects} from './client/store/client.effects';
 
 export const configFactory = (configService: ConfigService) => {
   return () => configService.loadConfig();
@@ -30,6 +35,8 @@ export const configFactory = (configService: ConfigService) => {
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([ClientEffects])
   ],
   providers: [
     {

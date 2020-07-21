@@ -3,6 +3,9 @@ import {FormArray, FormGroup} from '@angular/forms';
 import {ClientService} from '../../services/client.service';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 import {ClientFormBuilderService} from '../../forms/client-form-builder.service';
+import * as ClientActions from '../../store/client.actions';
+import {Store} from '@ngrx/store';
+
 
 @Component({
   selector: 'app-add-client',
@@ -14,7 +17,9 @@ export class AddClientComponent implements OnInit {
   photoName = '';
   sameAsRegisteredAddress = false;
 
-  constructor(private clientService: ClientService, private clientFormBuilder: ClientFormBuilderService) {
+  constructor(private clientService: ClientService,
+              private clientFormBuilder: ClientFormBuilderService,
+              private store: Store<any>) {
   }
 
   ngOnInit(): void {
@@ -33,8 +38,8 @@ export class AddClientComponent implements OnInit {
     if (this.sameAsRegisteredAddress) {
       this.markActualSameAsRegisteredAddress();
     }
-    console.log(this.clientForm);
-    this.clientService.addClient(this.clientForm.value).subscribe();
+    this.store.dispatch(new ClientActions.AddClientStart(this.clientForm.value));
+    // this.clientService.addClient(this.clientForm.value).subscribe();
   }
 
   actualAddressCheckboxClicked(event: MatCheckboxChange) {

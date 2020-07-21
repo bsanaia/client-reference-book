@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ClientModel} from '../models/client.model';
+// import {ClientModel} from '../models/client.model';
 import {ConfigService} from '../../services/global-proxy-service.service';
 
 @Injectable({providedIn: 'root'})
@@ -10,20 +10,20 @@ export class ClientService {
 
   baseUrl = this.configService.config.baseUrl;
 
-  addClient(formData: ClientModel) {
-    const data = {
-      name: formData.name,
-      lastName: formData.lastName,
-      mobile: formData.mobile,
-      idNumber: formData.idNumber,
-      registeredAddress: formData.registeredAddress,
-      actualAddress: formData.actualAddress,
-      gender: formData.gender,
-      photo: formData.photo,
-      account: formData.account
-    };
-    return this.http.post(`${this.baseUrl}/clients`, data);
-  }
+  // addClient(formData: ClientModel) {
+  //   const data = {
+  //     name: formData.name,
+  //     lastName: formData.lastName,
+  //     mobile: formData.mobile,
+  //     idNumber: formData.idNumber,
+  //     registeredAddress: formData.registeredAddress,
+  //     actualAddress: formData.actualAddress,
+  //     gender: formData.gender,
+  //     photo: formData.photo,
+  //     account: formData.account
+  //   };
+  //   return this.http.post(`${this.baseUrl}/clients`, data);
+  // }
 
   getClients() {
     return this.http.get(`${this.baseUrl}/clients`);

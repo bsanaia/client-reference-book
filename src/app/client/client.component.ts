@@ -3,10 +3,12 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {ClientService} from './services/client.service';
 import {ClientModel} from './models/client.model';
-import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteClientComponent} from './components/delete-client/delete-client.component';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {Store} from '@ngrx/store';
+import * as ClientActions from './store/client.actions';
+
 
 @Component({
   selector: 'app-client',
@@ -27,21 +29,31 @@ export class ClientComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'name', 'lastName', 'gender', 'mobile', 'idNumber', 'actions'];
 
 
-  constructor(private clientService: ClientService,
-              private router: Router, private dialog: MatDialog) {
+  constructor(private clientService: ClientService, private dialog: MatDialog, private store: Store<any>) {
   }
 
   ngOnInit(): void {
-    this.clientService.getClients().subscribe((clients: ClientModel[]) => {
-      console.log(clients);
-      this.dataSource = new MatTableDataSource(clients);
-      this.dataSource.sort = this.sort;
-      const sortingData = localStorage.getItem('sorting');
-      if (sortingData) {
-        const sorting: {active: string, direction: string} = JSON.parse(sortingData);
-        this.dataSource.sort.active = sorting.active;
-        this.dataSource.sort.direction = sorting.direction;
-      }
+    // this.clientService.getClients().subscribe((clients: ClientModel[]) => {
+    //   console.log(clients);
+    //   this.dataSource = new MatTableDataSource(clients);
+    //   this.dataSource.sort = this.sort;
+    //   const sortingData = localStorage.getItem('sorting');
+    //   if (sortingData) {
+    //     const sorting: {active: string, direction: string} = JSON.parse(sortingData);
+    //     this.dataSource.sort.active = sorting.active;
+    //     this.dataSource.sort.direction = sorting.direction;
+    //   }
+    // });
+    this.store.dispatch(new ClientActions.GetClients());
+    this.store.select('client').subscribe(clients => {
+        this.dataSource = new MatTableDataSource(clients.clients);
+        this.dataSource.sort = this.sort;
+        const sortingData = localStorage.getItem('sorting');
+        if (sortingData) {
+          const sorting: {active: string, direction: string} = JSON.parse(sortingData);
+          this.dataSource.sort.active = sorting.active;
+          this.dataSource.sort.direction = sorting.direction;
+        }
     });
   }
 
