@@ -1,0 +1,84 @@
+.container {
+  margin-top: 40px;
+  display: flex;
+}
+
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+
+
+.img-container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.user-img {
+  display: inline;
+  margin: 0 auto 0 -25%;
+  height: 100%;
+  width: auto;
+}
+
+.user-info-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addresses {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-profile-button {
+  border: none;
+  outline: none;
+  background: rgb(64, 162, 207);
+  color: white;
+  font-size: 22px;
+  border-radius: 8px;
+  padding: 12px 20px 12px 20px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.update-profile-button:hover {
+  background: #1372f3;
+}
+
+.account-container {
+  width: 50%;
+  padding: 35px;
+}
+
+.accounts {
+  text-align: center;
+}
+
+.account-table {
+  width: 100%;
+  padding: 35px;
+  background: #dedede;
+}
+
+.account-table > tr > th {
+  font-weight: 500;
+}
+
+.account-table > tr  {
+  text-align: center;
+}

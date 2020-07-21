@@ -1,2 +1,219 @@
 <app-header [title]="'Client Profile'"></app-header>
-<p>Client Component Works</p>
+
+{{ clientForm.value | json }}
+
+<div class="container">
+  <div class="user-info-container">
+    <div class="img-container">
+      <img class="user-img" [src]="clientForm.value.photo" alt="">
+    </div>
+    <div class="user-info">
+      <form [formGroup]="clientForm" class="user-info-form">
+
+        <mat-form-field class="form-input">
+          <mat-label>* Name</mat-label>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="clientForm.get('name').touched && clientForm.get('name').errors?.required">
+            Name is <strong>required</strong>
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('name').touched && clientForm.get('name').errors?.twoLanguageNotAllowed">
+            English and Georgian together is not allowed
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('name').touched && clientForm.get('name').errors?.wrongCharacters">
+            Only allowed languages are English and Georgian
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('name').touched && clientForm.get('name').errors?.minlength">
+            Name should be at least 2 characters long
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('name').touched && clientForm.get('name').errors?.maxlength">
+            Name should be maximum 50 characters long
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="form-input">
+          <mat-label>* Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-error *ngIf="clientForm.get('lastName').touched && clientForm.get('lastName').errors?.required">
+            Name is <strong>required</strong>
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('lastName').touched && clientForm.get('lastName').errors?.twoLanguageNotAllowed">
+            English and Georgian together is not allowed
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('lastName').touched && clientForm.get('lastName').errors?.wrongCharacters">
+            Only allowed languages are English and Georgian
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('lastName').touched && clientForm.get('lastName').errors?.minlength">
+            Name should be at least 2 characters long
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('lastName').touched && clientForm.get('lastName').errors?.maxlength">
+            Name should be maximum 50 characters long
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-input">
+          <mat-label>* Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-input">
+          <mat-label>* ID number</mat-label>
+          <input matInput formControlName="idNumber">
+          <mat-error *ngIf="clientForm.get('idNumber').touched &&
+      clientForm.get('idNumber').errors?.required">
+            ID number is <strong>required</strong>
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('idNumber').touched &&
+      clientForm.get('idNumber').errors?.onlyNumber">
+            ID Number should contain only numeric values
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('idNumber').touched &&
+      clientForm.get('idNumber').errors?.minlength || clientForm.get('idNumber').errors?.maxlength">
+            ID number should be 11 characters long
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-input">
+          <mat-label>* Mobile</mat-label>
+          <input matInput formControlName="mobile">
+          <mat-error *ngIf="clientForm.get('mobile').touched &&
+      clientForm.get('mobile').errors?.required">
+            Mobile is <strong>required</strong>
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('mobile').touched &&
+      clientForm.get('mobile').errors?.minlength || clientForm.get('mobile').errors?.maxlength">
+            Mobile should be 9 characters long
+          </mat-error>
+
+          <mat-error *ngIf="clientForm.get('mobile').touched &&
+      clientForm.get('mobile').errors?.onlyNumber">
+            Mobile should contain only numeric values
+          </mat-error>
+
+        </mat-form-field>
+
+      </form>
+
+      <form [formGroup]="clientForm">
+
+        <p class="help-block">Registered Address</p>
+        <div formGroupName="registeredAddress" class="client-from addresses">
+          <mat-form-field class="form-input address-form-input">
+            <mat-label>* City</mat-label>
+            <input matInput formControlName="city">
+            <mat-error *ngIf="clientForm.get('registeredAddress').get('city').touched &&
+        clientForm.get('registeredAddress').get('city').errors?.required">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-input address-form-input">
+            <mat-label>* Country</mat-label>
+            <input matInput formControlName="country">
+            <mat-error *ngIf="clientForm.get('registeredAddress').get('country').touched &&
+        clientForm.get('registeredAddress').get('country').errors?.required">
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="form-input address-form-input">
+            <mat-label>* Address</mat-label>
+            <input matInput formControlName="address">
+            <mat-error *ngIf="clientForm.get('registeredAddress').get('address').touched &&
+        clientForm.get('registeredAddress').get('address').errors?.required">
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </form>
+
+      <form [formGroup]="clientForm">
+
+        <div>
+          <p class="help-block">Actual Address</p>
+        </div>
+        <div formGroupName="actualAddress" class="client-from addresses" id="actualAddress">
+          <mat-form-field class="form-input address-form-input">
+            <mat-label>* City</mat-label>
+            <input matInput formControlName="city">
+            <mat-error *ngIf="clientForm.get('actualAddress').get('city').invalid &&
+        clientForm.get('actualAddress').get('city').touched">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-input address-form-input">
+            <mat-label>* Country</mat-label>
+            <input matInput formControlName="country">
+            <mat-error *ngIf="clientForm.get('actualAddress').get('country').invalid &&
+        clientForm.get('actualAddress').get('country').touched">
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="form-input address-form-input">
+            <mat-label>* Address</mat-label>
+            <input matInput formControlName="address">
+            <mat-error *ngIf="clientForm.get('actualAddress').get('address').invalid &&
+        clientForm.get('actualAddress').get('address').touched">
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </form>
+
+    </div>
+    <div class="update-profile-button-container">
+      <button class="update-profile-button">Update Info</button>
+    </div>
+  </div>
+
+  <div class="account-container">
+    <h2 class="accounts">Accounts</h2>
+    <table class="account-table">
+      <tr>
+        <th>Account Number</th>
+        <th>Account Type</th>
+        <th>Currency</th>
+        <th>Account Status</th>
+        <th></th>
+      </tr>
+
+      <tr>
+        <td>asdasd</td>
+        <td>asdasd</td>
+        <td>asdasd</td>
+        <td>asdasd</td>
+        <td>Close</td>
+      </tr>
+
+      <tr>
+        <td>asdsd</td>
+        <td>asdsd</td>
+        <td>asdsd</td>
+        <td>asdsd</td>
+        <td>Open</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
