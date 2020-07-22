@@ -1,5 +1,6 @@
 <app-header [title]="'Client Profile'"></app-header>
 
+
 <div @slideIn class="container">
   <div class="user-info-container">
     <div class="img-container">
@@ -204,8 +205,8 @@
         </td>
         <td>{{account.accountStatus}}</td>
         <td>
-          <button (click)="changeAccountStatus('close', j)" *ngIf="account.accountStatus === 'open'" class="btn-close">Close</button>
-          <button (click)="changeAccountStatus('open', j)" *ngIf="account.accountStatus === 'close'" class="btn-open">Open</button>
+          <button (click)="changeAccountStatus('closed', j)" *ngIf="account.accountStatus === 'open'" class="btn-close">Close</button>
+          <button (click)="changeAccountStatus('open', j)" *ngIf="account.accountStatus === 'closed'" class="btn-open">Open</button>
         </td>
       </tr>
     </table>

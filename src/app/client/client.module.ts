@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { DeleteClientComponent } from './components/delete-client/delete-client.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DeleteClientComponent } from './components/delete-client/delete-client.
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    FormsModule,
   ],
   providers: [],
   entryComponents: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {FormArray, FormGroup} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ClientFormBuilderService} from '../../forms/client-form-builder.service';
 import {slideInAnimation} from '../../animations/client-animations';
 import * as alertify from 'alertifyjs';
@@ -28,13 +28,21 @@ export class ClientProfileComponent implements OnInit {
       this.userId = userData.client.id;
       delete userData.client.id;
       this.clientForm = this.clientFormBuilder.buildForm();
+      let i = 0;
+      while (i < userData.client.account.length - 1) {
+        (this.clientForm.get('account') as FormArray).push(
+          new FormGroup({
+            accountNumber: new FormControl('', [Validators.required]),
+            accountType: new FormControl('', [Validators.required]),
+            currency: new FormControl('', [Validators.required]),
+            accountStatus: new FormControl('', [Validators.required]),
+        }));
+        i++;
+      }
       this.clientForm.setValue(userData.client);
       console.log(this.clientForm);
     });
 
-    // this.store.select('client').subscribe(clientData => {
-    //   this.clientForm.setValue(clientData);
-    // });
   }
 
   updateInfo() {

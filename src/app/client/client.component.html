@@ -8,7 +8,7 @@
 <div @slideIn class="clients-container">
   <mat-form-field class="table-filter-input">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. john" #input>
+    <input matInput [(ngModel)]="filterVal" name="filter" (keyup)="applyFilter($event)" placeholder="Ex. john" #input>
   </mat-form-field>
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="mat-elevation-z8 clients-table">
 
@@ -56,6 +56,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <app-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15, 20]" [length]="100"></app-paginator>
+  <app-paginator #paginator [pageIndex]="pageIndex" (pageChangedEvent)="onPageChange($event)"></app-paginator>
+
+
 
 </div>

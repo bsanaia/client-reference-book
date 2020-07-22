@@ -1,4 +1,5 @@
-import { Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-paginator',
@@ -10,6 +11,9 @@ export class PaginatorComponent implements OnInit {
   @Input() length: any;
   @Input() pageSize: any;
   @Input() pageSizeOptions: any;
+  @Input() pageIndex = 0;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @Output() pageChangedEvent: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
   }
@@ -17,5 +21,9 @@ export class PaginatorComponent implements OnInit {
   ngOnInit() {
   }
 
+  pageChanged(ev) {
+    console.log(ev);
+    this.pageChangedEvent.emit(ev.pageIndex);
+  }
 
 }
