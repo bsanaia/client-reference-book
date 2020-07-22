@@ -28,7 +28,6 @@ export class AddClientComponent implements OnInit {
   ngOnInit(): void {
     this.clientForm = this.clientFormBuilder.buildForm();
     this.clientForm.get('idNumber').valueChanges.subscribe(() => {
-      console.log(this.clientForm.get('idNumber'));
     });
   }
 

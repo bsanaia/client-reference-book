@@ -22,7 +22,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   pageChanged(ev) {
-    console.log(ev);
     this.pageChangedEvent.emit(ev.pageIndex);
   }
 

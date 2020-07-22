@@ -40,7 +40,6 @@ export class ClientProfileComponent implements OnInit {
         i++;
       }
       this.clientForm.setValue(userData.client);
-      console.log(this.clientForm);
     });
 
   }
@@ -55,7 +54,6 @@ export class ClientProfileComponent implements OnInit {
   }
 
   changeAccountStatus(status, accountIndex) {
-    console.log((this.clientForm.get('account') as FormArray).at(accountIndex), status);
     (this.clientForm.get('account') as FormArray).at(accountIndex).patchValue({
       accountStatus: status
     });
