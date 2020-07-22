@@ -8,7 +8,8 @@
 <div @slideIn class="clients-container">
   <mat-form-field class="table-filter-input">
     <mat-label>Filter</mat-label>
-    <input matInput [(ngModel)]="filterVal" name="filter" (keyup)="applyFilter($event)" placeholder="Ex. john" #input>
+    <input matInput [(ngModel)]="filterVal" name="filter" (keyup)="applyFilter($event)"
+           placeholder="Name, Last Name, Gender, Mobile, Id Number" #input>
   </mat-form-field>
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)" class="mat-elevation-z8 clients-table">
 
