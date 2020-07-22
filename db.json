@@ -49,7 +49,7 @@
       },
       "account": [
         {
-          "accountNumber": "sdfsdf",
+          "accountNumber": "12345",
           "accountType": "cumulative",
           "currency": [
             "GEL"
@@ -64,7 +64,7 @@
             "USD",
             "EUR"
           ],
-          "accountStatus": "open"
+          "accountStatus": "closed"
         },
         {
           "accountNumber": "fsdfsdf",
@@ -84,6 +84,245 @@
         }
       ],
       "id": 4
+    },
+    {
+      "name": "asd",
+      "lastName": "asd",
+      "gender": "male",
+      "idNumber": "34234234434",
+      "mobile": "444444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": "3535435",
+          "accountType": "current",
+          "currency": [
+            "RUB"
+          ],
+          "accountStatus": "closed"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "name": "asd",
+      "lastName": "assd",
+      "gender": "male",
+      "idNumber": "32423423444",
+      "mobile": "544444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 12345,
+          "accountType": "current",
+          "currency": [
+            "EUR"
+          ],
+          "accountStatus": "open"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "name": "asd",
+      "lastName": "assd",
+      "gender": "male",
+      "idNumber": "32423423444",
+      "mobile": "544444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 12345,
+          "accountType": "current",
+          "currency": [
+            "EUR"
+          ],
+          "accountStatus": "open"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "name": "asd",
+      "lastName": "asd",
+      "gender": "male",
+      "idNumber": "34343434444",
+      "mobile": "544444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 12345,
+          "accountType": "current",
+          "currency": [
+            "RUB"
+          ],
+          "accountStatus": "open"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "name": "asd",
+      "lastName": "asd",
+      "gender": "male",
+      "idNumber": "34343434444",
+      "mobile": "544444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 12345,
+          "accountType": "current",
+          "currency": [
+            "RUB"
+          ],
+          "accountStatus": "open"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "name": "asd",
+      "lastName": "asd",
+      "gender": "male",
+      "idNumber": "34343434444",
+      "mobile": "544444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 12345,
+          "accountType": "current",
+          "currency": [
+            "GEL",
+            "USD",
+            "EUR",
+            "RUB"
+          ],
+          "accountStatus": "open"
+        }
+      ],
+      "id": 10
+    },
+    {
+      "name": "beqachiko",
+      "lastName": "asd",
+      "gender": "male",
+      "idNumber": "34343434444",
+      "mobile": "544444444",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "d",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 12345,
+          "accountType": "current",
+          "currency": [
+            "GEL",
+            "USD",
+            "EUR",
+            "RUB"
+          ],
+          "accountStatus": "open"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "name": "asdasd",
+      "lastName": "asasd",
+      "gender": "male",
+      "idNumber": "32423423444",
+      "mobile": "534434344",
+      "photo": "",
+      "registeredAddress": {
+        "country": "d",
+        "city": "asd",
+        "address": "d"
+      },
+      "actualAddress": {
+        "country": "d",
+        "city": "asd",
+        "address": "d"
+      },
+      "account": [
+        {
+          "accountNumber": 123456,
+          "accountType": "current",
+          "currency": [
+            "USD",
+            "EUR"
+          ],
+          "accountStatus": "closed"
+        }
+      ],
+      "id": 12
     }
   ]
 }

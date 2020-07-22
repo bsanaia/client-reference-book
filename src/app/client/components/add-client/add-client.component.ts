@@ -7,6 +7,7 @@ import * as ClientActions from '../../store/client.actions';
 import {Store} from '@ngrx/store';
 import {slideInAnimation} from '../../animations/client-animations';
 import * as alertify from 'alertifyjs';
+import {withLatestFrom} from 'rxjs/operators';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class AddClientComponent implements OnInit {
   clientForm: FormGroup;
   photoName = '';
   sameAsRegisteredAddress = false;
+  clients = [];
+  accountNums = [];
+  isUniqueNumber = true;
 
   constructor(private clientService: ClientService,
               private clientFormBuilder: ClientFormBuilderService,
@@ -26,6 +30,15 @@ export class AddClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(new ClientActions.GetClients());
+    this.store.select('client').subscribe((res: any) => {
+      this.clients = res.clients;
+      this.clients.forEach(client => {
+        client.account.forEach(acc => {
+          this.accountNums.push(acc.accountNumber);
+        });
+      });
+    });
     this.clientForm = this.clientFormBuilder.buildForm();
     this.clientForm.get('idNumber').valueChanges.subscribe(() => {
     });
@@ -41,11 +54,24 @@ export class AddClientComponent implements OnInit {
       alertify.error('Form is not valid');
       return;
     }
+
+    this.clientForm.value.account.forEach(acc => {
+      if (this.accountNums.includes(acc.accountNumber)) {
+        alertify.error('Account number already exists');
+        this.isUniqueNumber = false;
+        return;
+      }
+    });
+
     if (this.sameAsRegisteredAddress) {
       this.markActualSameAsRegisteredAddress();
     }
-    this.store.dispatch(new ClientActions.AddClientStart(this.clientForm.value));
-    alertify.success('Client Added');
+    if (this.isUniqueNumber) {
+      this.store.dispatch(new ClientActions.AddClientStart(this.clientForm.value));
+      alertify.success('Client Added');
+    } else {
+      this.isUniqueNumber = true;
+    }
   }
 
   actualAddressCheckboxClicked(event: MatCheckboxChange) {
